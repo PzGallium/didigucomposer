@@ -1,73 +1,67 @@
 import React, { useState } from 'react';
 import './Contact.css';
 
+const FORMSPREE_ID = process.env.REACT_APP_FORMSPREE_ID;
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const mailto = `mailto:didi.gu.519@gmail.com?subject=${encodeURIComponent(
-      `Message from ${formData.name || 'Didi Gu website'}`
-    )}&body=${encodeURIComponent(
-      `${formData.message}\n\n— ${formData.name || ''} (${formData.email || 'no email provided'})`
-    )}`;
-    window.location.href = mailto;
+    if (FORMSPREE_ID) {
+      setStatus('sending');
+      try {
+        const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          }),
+        });
+        if (res.ok) {
+          setStatus('success');
+          setFormData({ name: '', email: '', message: '' });
+        } else {
+          setStatus('error');
+        }
+      } catch {
+        setStatus('error');
+      }
+    } else {
+      const mailto = `mailto:didigucomposer@gmail.com?subject=${encodeURIComponent(
+        `Message from ${formData.name || 'Didi Gu website'}`
+      )}&body=${encodeURIComponent(
+        `${formData.message}\n\n— ${formData.name || ''} (${formData.email || 'no email provided'})`
+      )}`;
+      window.location.href = mailto;
+    }
   };
 
   return (
     <div className="contact-page">
       <div className="contact-hero">
         <div className="container">
-          <h1>Say hello</h1>
-          <p>Quick note, idea, or opportunity—short messages are very welcome.</p>
+          <h1>Contact</h1>
+          <p className="contact-hero-tagline">Open to collaboration and commissions.</p>
         </div>
       </div>
 
       <div className="contact-content">
         <div className="container">
           <div className="contact-grid">
-            <div className="contact-info">
-              <h2>Get in touch</h2>
-              <p>
-                For commissions, collaborations, or inquiries about my work, please feel
-                free to reach out via email. I welcome thoughtful messages about
-                potential projects and artistic collaborations.
-              </p>
-
-              <div className="contact-details">
-                <div className="contact-item">
-                  <div className="contact-icon">✉</div>
-                  <div className="contact-text">
-                    <h3>Email</h3>
-                    <p>
-                      <a href="mailto:didi.gu.519@gmail.com">
-                        didi.gu.519@gmail.com
-                      </a>
-                    </p>
-                  </div>
-                </div>
-
-                <div className="contact-item">
-                  <div className="contact-icon">⏱</div>
-                  <div className="contact-text">
-                    <h3>Typical response time</h3>
-                    <p>Within a few days for most messages.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <div className="contact-form-container">
-              <h2>Drop a quick note</h2>
               <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="name">Name</label>
@@ -75,7 +69,6 @@ const Contact = () => {
                     id="name"
                     name="name"
                     type="text"
-                    placeholder="How should I address you?"
                     value={formData.name}
                     onChange={handleChange}
                   />
@@ -87,7 +80,6 @@ const Contact = () => {
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="Where can I reply?"
                     value={formData.email}
                     onChange={handleChange}
                   />
@@ -100,14 +92,27 @@ const Contact = () => {
                     name="message"
                     rows="6"
                     required
-                    placeholder="Tell me about your project or collaboration idea..."
                     value={formData.message}
                     onChange={handleChange}
                   />
                 </div>
 
-                <button type="submit" className="submit-btn">
-                  Open email draft
+                {status === 'success' && (
+                  <p className="contact-form-status contact-form-status--success">
+                    Sent. Thank you.
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className="contact-form-status contact-form-status--error">
+                    Something went wrong. Please try again or email directly.
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  className="submit-btn"
+                  disabled={status === 'sending'}
+                >
+                  {status === 'sending' ? 'Sending…' : FORMSPREE_ID ? 'Send' : 'Open email draft'}
                 </button>
               </form>
             </div>
