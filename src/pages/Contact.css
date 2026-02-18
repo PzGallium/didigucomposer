@@ -190,16 +190,18 @@
 }
 
 .contact-form-status {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
 }
 
 .contact-form-status--success {
-  color: var(--color-slate-gray);
+  color: var(--color-text-primary);
 }
 
 .contact-form-status--error {
-  color: var(--color-slate-gray);
+  color: var(--color-text-primary);
 }
 
 @media (max-width: 768px) {

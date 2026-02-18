@@ -98,8 +98,8 @@ const Contact = () => {
                 </div>
 
                 {status === 'success' && (
-                  <p className="contact-form-status contact-form-status--success">
-                    Sent. Thank you.
+                  <p className="contact-form-status contact-form-status--success" role="alert">
+                    Your message has been sent successfully. Thank you.
                   </p>
                 )}
                 {status === 'error' && (
