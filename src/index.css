@@ -1,13 +1,211 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Color System Variables */
+:root {
+  /* Base Backgrounds */
+  --color-cream-white: #FAF7F2;
+  --color-warm-ivory: #F6F2EA;
+  
+  /* Neutrals (Silver Cat) */
+  --color-light-silver: #E5E6E8;
+  --color-soft-fog: #C9CCD1;
+  --color-slate-gray: #6A7078;
+  
+  /* Text Colors */
+  --color-text-primary: #2F2F2F;
+  --color-text-secondary: #4A4F55;
+  --color-heading: #1C1C1E;
+  
+  /* Accents (Butter Gold) */
+  --color-butter-yellow: #F1DDAA;
+  --color-golden-cream: #EECF85;
+  --color-honey-gold: #E4C16D;
+  
+  /* Cold Balance (Silver Undertones) */
+  --color-fog-blue: #DDE3EC;
+  --color-blue-gray: #CBD3DD;
+}
+
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     sans-serif;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background: var(--color-cream-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.App {
+  background: var(--color-cream-white);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.75rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-heading);
+}
+
+h1,
+h2 {
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Force navigation text colors */
+.navigation a,
+.navigation .nav-logo,
+.navigation .nav-link,
+nav a,
+nav .nav-logo,
+nav .nav-link,
+header a,
+header nav a {
+  color: #1C1C1E !important;
+  opacity: 1 !important;
+}
+
+.navigation a:hover,
+.navigation .nav-logo:hover,
+.navigation .nav-link:hover,
+.navigation .nav-link.active,
+nav a:hover,
+nav .nav-logo:hover,
+nav .nav-link:hover,
+nav .nav-link.active,
+header a:hover,
+header nav a:hover {
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+
+button {
+  font-family: inherit;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn-primary {
+  background: var(--color-butter-yellow);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: var(--color-golden-cream);
+  color: var(--color-text-primary);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-soft-fog);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-golden-cream);
+  background: var(--color-butter-yellow);
+  color: var(--color-text-primary);
+}
+
+.page {
+  padding-top: 80px;
+}
+
+.page-hero {
+  padding: 5.5rem 0 3.5rem;
+}
+
+.page-kicker {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.page-hero h1 {
+  font-size: 2.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.page-subtitle {
+  max-width: 640px;
+  color: var(--color-text-secondary);
+  font-size: 0.98rem;
+}
+
+.page-section {
+  padding: 2.5rem 0 4.5rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  .page-hero {
+    padding: 4.5rem 0 2.75rem;
+  }
+
+  .page-hero h1 {
+    font-size: 2.1rem;
+  }
+}
+

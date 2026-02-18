@@ -7,101 +7,164 @@ const Home = () => {
     <div className="home">
       {/* Hero Section */}
       <section className="hero">
+        <div className="hero-background" />
         <div className="hero-content">
-          <h1 className="hero-title">DIDI</h1>
-          <p className="hero-subtitle">Musician • Composer • Performer</p>
+          <p className="hero-kicker">Modern Avant-Garde Composer</p>
+          <h1 className="hero-title">Didi Gu</h1>
+          <p className="hero-subtitle">
+            Emotionally nuanced sonic storytelling through experimental sound design,
+            interdisciplinary composition, and contemporary classical aesthetics.
+          </p>
           <div className="hero-cta">
-            <Link to="/media" className="btn-primary">Listen Now</Link>
-            <Link to="/bio" className="btn-secondary">Learn More</Link>
+            <Link to="/projects" className="btn btn-primary">
+              View works
+            </Link>
+            <Link to="/contact" className="btn btn-secondary">
+              Let&apos;s collaborate
+            </Link>
           </div>
         </div>
-        <div className="hero-background"></div>
       </section>
 
-      {/* Bio Excerpt */}
-      <section className="bio-excerpt">
+      {/* About Preview */}
+      <section className="home-section home-about">
         <div className="container">
-          <div className="bio-content">
-            <h2>About Didi</h2>
+          <div className="home-section-header">
+            <h2>About</h2>
             <p>
-              A visionary musician whose innovative approach to composition bridges classical 
-              tradition with contemporary expression. With over a decade of experience in 
-              performance and composition, Didi has established a unique voice in the 
-              contemporary music scene.
+              Didi Gu is a modern avant-garde composer pursuing a PhD in Composition.
+              Her work blends experimental techniques, acoustic textures, electronic elements,
+              and emotional narrative structures.
             </p>
-            <Link to="/bio" className="read-more">Read Full Biography →</Link>
+          </div>
+          <div className="home-two-column">
+            <p>
+              Through exploratory sound design and interdisciplinary approaches, I create
+              compositions that navigate the space between traditional classical forms and
+              contemporary experimental practices. Each work is a careful exploration of
+              texture, emotion, and sonic narrative.
+            </p>
+            <p>
+              Currently pursuing doctoral studies in Music Composition, my creative practice
+              centers on thoughtful, sensitive, and forward-looking approaches to musical
+              expression.
+            </p>
+          </div>
+          <Link to="/about" className="home-link">
+            Read the full story ↗
+          </Link>
+        </div>
+      </section>
+
+      {/* Skills */}
+      <section className="home-section home-skills">
+        <div className="container">
+          <div className="home-section-header">
+            <h2>Artistic Focus</h2>
+            <p>
+              A blend of experimental techniques, acoustic exploration, and electronic
+              elements focused on emotionally resonant and texturally rich compositions.
+            </p>
+          </div>
+          <div className="skills-grid">
+            <div className="skill-card">
+              <h3>Experimental Sound Design</h3>
+              <p>
+                Exploring unconventional timbres, extended techniques, and innovative
+                approaches to acoustic and electronic sound generation.
+              </p>
+              <ul>
+                <li>Extended instrumental techniques</li>
+                <li>Electronic sound synthesis &amp; processing</li>
+                <li>Textural and timbral exploration</li>
+              </ul>
+            </div>
+            <div className="skill-card">
+              <h3>Interdisciplinary Composition</h3>
+              <p>
+                Creating works that bridge musical composition with other art forms,
+                exploring narrative structures and emotional depth.
+              </p>
+              <ul>
+                <li>Collaborative multimedia projects</li>
+                <li>Narrative and programmatic composition</li>
+                <li>Cross-artform integration</li>
+              </ul>
+            </div>
+            <div className="skill-card">
+              <h3>Modern Classical Aesthetics</h3>
+              <p>
+                Balancing contemporary experimental practices with classical forms,
+                creating works that feel both innovative and grounded.
+              </p>
+              <ul>
+                <li>Contemporary classical forms</li>
+                <li>Avant-garde composition techniques</li>
+                <li>Emotional and textural exploration</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Latest Work */}
-      <section className="latest-work">
+      {/* Projects Preview */}
+      <section className="home-section home-projects">
         <div className="container">
-          <h2>Latest Work</h2>
-          <div className="work-grid">
-            <div className="work-item">
-              <div className="work-image work-1"></div>
-              <h3>Ethereal Echoes</h3>
-              <p>Latest album exploring themes of memory and transformation</p>
-              <span className="work-date">2024</span>
+          <div className="home-section-header">
+            <h2>Selected Works</h2>
+            <p>
+              A selection of recent compositions and sound projects. See the full catalog
+              on the works page.
+            </p>
+          </div>
+          <div className="projects-preview-grid">
+            <div className="projects-preview-card">
+              <h3>Echoes of Memory</h3>
+              <p>
+                An experimental chamber work exploring the intersection of acoustic
+                textures and electronic processing, creating a dialogue between past and present.
+              </p>
+              <span className="pill">Chamber Music</span>
+              <span className="pill">Electroacoustic</span>
             </div>
-            <div className="work-item">
-              <div className="work-image work-2"></div>
-              <h3>Urban Symphony</h3>
-              <p>Collaborative piece with the City Chamber Orchestra</p>
-              <span className="work-date">2023</span>
+            <div className="projects-preview-card">
+              <h3>Urban Fragments</h3>
+              <p>
+                A multimedia composition blending field recordings, instrumental writing,
+                and spatial audio design to capture the emotional landscape of contemporary city life.
+              </p>
+              <span className="pill">Multimedia</span>
+              <span className="pill">Soundscape</span>
             </div>
-            <div className="work-item">
-              <div className="work-image work-3"></div>
-              <h3>Digital Dreams</h3>
-              <p>Experimental electronic composition</p>
-              <span className="work-date">2023</span>
+            <div className="projects-preview-card">
+              <h3>Textural Variations</h3>
+              <p>
+                A series of short pieces focusing on timbral exploration and extended
+                techniques, examining the emotional resonance of texture in musical form.
+              </p>
+              <span className="pill">Solo Works</span>
+              <span className="pill">Extended Techniques</span>
             </div>
           </div>
+          <Link to="/projects" className="home-link">
+            Explore all works ↗
+          </Link>
         </div>
       </section>
 
-      {/* Upcoming Events */}
-      <section className="upcoming-events">
+      {/* Contact CTA */}
+      <section className="home-section home-contact-cta">
         <div className="container">
-          <h2>Upcoming Events</h2>
-          <div className="events-list">
-            <div className="event-item">
-              <div className="event-date">
-                <span className="day">15</span>
-                <span className="month">DEC</span>
-              </div>
-              <div className="event-details">
-                <h3>Winter Concert Series</h3>
-                <p>Carnegie Hall, New York</p>
-                <span className="event-time">8:00 PM</span>
-              </div>
-              <a href="#" className="event-tickets">Get Tickets</a>
-            </div>
-            <div className="event-item">
-              <div className="event-date">
-                <span className="day">22</span>
-                <span className="month">JAN</span>
-              </div>
-              <div className="event-details">
-                <h3>Composer's Workshop</h3>
-                <p>Juilliard School, New York</p>
-                <span className="event-time">2:00 PM</span>
-              </div>
-              <a href="#" className="event-tickets">Register</a>
-            </div>
-            <div className="event-item">
-              <div className="event-date">
-                <span className="day">08</span>
-                <span className="month">FEB</span>
-              </div>
-              <div className="event-details">
-                <h3>Album Release Concert</h3>
-                <p>Blue Note Jazz Club, New York</p>
-                <span className="event-time">9:00 PM</span>
-              </div>
-              <a href="#" className="event-tickets">Get Tickets</a>
-            </div>
+          <div className="home-contact-card">
+            <h2>Let&apos;s create together</h2>
+            <p>
+              I&apos;m open to collaborations, commissions, and interdisciplinary projects.
+              If you&apos;re interested in commissioning a work or exploring collaborative
+              possibilities, I&apos;d love to hear from you.
+            </p>
+            <Link to="/contact" className="btn btn-primary">
+              Get in touch
+            </Link>
           </div>
         </div>
       </section>
@@ -109,4 +172,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default Home;
