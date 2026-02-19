@@ -18,6 +18,12 @@ async function main() {
   const ico = await toIco(pngBuffers);
   fs.writeFileSync(icoPath, ico);
   console.log('Generated', icoPath);
+
+  for (const size of [192, 512]) {
+    const outPath = path.join(publicDir, `logo${size}.png`);
+    await sharp(svg).resize(size, size).png().toFile(outPath);
+    console.log('Generated', outPath);
+  }
 }
 
 main().catch((err) => {

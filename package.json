@@ -16,6 +16,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "icons": "node scripts/generate-favicon.js",
+    "prebuild": "npm run icons",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
