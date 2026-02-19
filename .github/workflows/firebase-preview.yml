@@ -32,11 +32,10 @@ jobs:
         env:
           CI: true
 
-      - name: Deploy Preview
+      - name: Deploy to Firebase Hosting Preview
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           projectId: "${{ secrets.FIREBASE_PROJECT_ID }}"
           expires: 7d
-        env:
-          FIREBASE_SERVICE_ACCOUNT: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
