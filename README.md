@@ -18,3 +18,11 @@ In the project directory, you can run:
 ## Deployment
 
 This app is deployed on Firebase Hosting.
+
+### CI/CD
+
+The project uses GitHub Actions for continuous integration and deployment:
+
+- Push to `main` branch triggers automatic build and deploy to Firebase Hosting
+- Tests run before each deployment
+- Environment variables (e.g. Formspree) are configured via GitHub Secrets
