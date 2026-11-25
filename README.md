@@ -26,3 +26,18 @@ The project uses GitHub Actions for continuous integration and deployment:
 - Push to `main` branch triggers automatic build and deploy to Firebase Hosting
 - Tests run before each deployment
 - Environment variables (e.g. Formspree) are configured via GitHub Secrets
+
+## Works Admin
+
+The private `/admin` route lets the authorized Google account manage the works
+catalog and upload MP3 recordings without a code deployment.
+
+One-time Firebase setup:
+
+1. Enable Google Authentication.
+2. Create the Cloud Firestore database with the ID `media`.
+3. Publish `firestore.rules` in Firestore Rules.
+4. Publish `storage.rules` in Storage Rules.
+5. Open `/admin`, sign in, and import the existing catalog.
+
+New recordings are stored under `recordings/{workId}/` in Firebase Storage.

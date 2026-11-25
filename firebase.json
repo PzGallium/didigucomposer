@@ -1,4 +1,10 @@
 {
+  "firestore": [
+    {
+      "database": "media",
+      "rules": "firestore.rules"
+    }
+  ],
   "storage": {
     "rules": "storage.rules"
   },
