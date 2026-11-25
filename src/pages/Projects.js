@@ -2,6 +2,9 @@ import React from 'react';
 import ProjectCard from '../components/ProjectCard';
 import './Projects.css';
 
+const storageAudioUrl = (fileName) =>
+  `https://firebasestorage.googleapis.com/v0/b/didigucomposer.firebasestorage.app/o/${encodeURIComponent(fileName)}?alt=media`;
+
 const orchestralWorks = [
   {
     title: 'There, Blurred (2025)',
@@ -41,7 +44,8 @@ const chamberWorks = [
   {
     title: 'Washerwoman (2025)',
     subtitle: 'For clarinet, violin, cello, and piano.',
-    audioUrl: 'https://www.dropbox.com/scl/fi/beeq06e2oroazymhym9ag/Didi-Gu-Washerwoman.wav?rlkey=dg5yez25v64ytgvvwepoyynmr&st=0e9do6y2&dl=0',
+    audioUrl: storageAudioUrl('Didi Gu – Washerwoman.mp3'),
+    audioType: 'audio/mpeg',
     description: '',
     tech: [],
     link: '',
@@ -50,7 +54,8 @@ const chamberWorks = [
   {
     title: 'Where Quiet Lives Gather (2025)',
     subtitle: 'For soprano, flute, clarinet, violin, cello, percussion, and piano.',
-    audioUrl: 'https://www.dropbox.com/scl/fi/gzsxuu0tp2a5zs0rky89a/Gu-Where-Quiet-Lives-Gather.wav?rlkey=8yphh0rt3km21yhbd80zdixcv&st=26b351x4&dl=0',
+    audioUrl: storageAudioUrl('Gu - Where Quiet Lives Gather.wav'),
+    audioType: 'audio/wav',
     description: '',
     tech: [],
     link: '',
@@ -59,7 +64,8 @@ const chamberWorks = [
   {
     title: 'AIWS (2024)',
     subtitle: 'For string quartet.',
-    audioUrl: 'https://www.dropbox.com/scl/fi/y6j28gvmnhgxnprekh1be/071324_Mivos-DidiGu-AIWS.wav?rlkey=98vkxbxua7fzcddi2bujknvq3&st=1t4b3df4&dl=0',
+    audioUrl: storageAudioUrl('071324_Mivos-DidiGu-AIWS.wav'),
+    audioType: 'audio/wav',
     description: '',
     tech: [],
     link: '',

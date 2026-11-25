@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Portfolio recordings are public, while every client-side write is blocked.
+    match /{allPaths=**} {
+      allow read: if resource.contentType.matches('audio/.*');
+      allow write: if false;
+    }
+  }
+}
