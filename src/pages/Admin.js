@@ -24,7 +24,10 @@ import { auth, db, storage } from '../firebase';
 import { defaultWorks, formatWorkTitle, sortWorks } from '../data/defaultWorks';
 import './Admin.css';
 
-const ADMIN_EMAIL = 'zijia.pan@gmail.com';
+const ADMIN_EMAILS = [
+  'zijia.pan@gmail.com',
+  'didi.gu.519@gmail.com',
+];
 const MAX_AUDIO_SIZE = 100 * 1024 * 1024;
 
 const emptyForm = {
@@ -88,7 +91,7 @@ const Admin = () => {
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
 
-  const isAdmin = user?.email === ADMIN_EMAIL && user?.emailVerified;
+  const isAdmin = ADMIN_EMAILS.includes(user?.email) && user?.emailVerified;
   const editingWork = useMemo(
     () => works.find((work) => work.id === editingId),
     [editingId, works]

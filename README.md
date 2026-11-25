@@ -32,6 +32,11 @@ The project uses GitHub Actions for continuous integration and deployment:
 The private `/admin` route lets the authorized Google account manage the works
 catalog and upload MP3 recordings without a code deployment.
 
+Authorized administrators:
+
+- `zijia.pan@gmail.com`
+- `didi.gu.519@gmail.com`
+
 One-time Firebase setup:
 
 1. Enable Google Authentication.
