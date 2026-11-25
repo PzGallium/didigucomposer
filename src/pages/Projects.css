@@ -2,6 +2,10 @@
   padding-top: 80px;
 }
 
+.projects-page--with-player {
+  padding-bottom: 7rem;
+}
+
 .projects-page .page-hero {
   padding-bottom: 1.25rem;
 }
@@ -41,6 +45,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+
+  .projects-page--with-player {
+    padding-bottom: 9rem;
   }
 }
 

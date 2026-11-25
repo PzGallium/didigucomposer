@@ -15,17 +15,12 @@ const ProjectCard = ({
   link,
   linkLabel,
   audioUrl,
-  audioType,
+  onListen,
+  isAudioActive = false,
 }) => {
   const [showVideo, setShowVideo] = useState(false);
   const videoId = link ? getYouTubeVideoId(link) : null;
   const isYouTube = Boolean(videoId);
-
-  const handleAudioPlay = (event) => {
-    document.querySelectorAll('audio').forEach((audio) => {
-      if (audio !== event.currentTarget) audio.pause();
-    });
-  };
 
   return (
     <article className="project-card">
@@ -35,19 +30,14 @@ const ProjectCard = ({
       </header>
       {description && <p className="project-card-description">{description}</p>}
       {audioUrl && (
-        <div className="project-card-audio">
-          <span className="project-card-media-label">Listen</span>
-          <audio
-            controls
-            preload="metadata"
-            className="project-card-audio-player"
-            aria-label={`${title} recording`}
-            onPlay={handleAudioPlay}
-          >
-            <source src={audioUrl} type={audioType} />
-            Your browser does not support audio playback.
-          </audio>
-        </div>
+        <button
+          type="button"
+          className={`btn btn-primary project-card-audio-btn${isAudioActive ? ' project-card-audio-btn--active' : ''}`}
+          onClick={onListen}
+          aria-pressed={isAudioActive}
+        >
+          Listen
+        </button>
       )}
       {tech && tech.length > 0 && (
         <ul className="project-card-tags">
