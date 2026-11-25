@@ -31,3 +31,26 @@ test('marks the button for the active recording', () => {
 
   expect(screen.getByRole('button', { name: 'Listen' })).toHaveAttribute('aria-pressed', 'true');
 });
+
+test('keeps video compact until Watch is clicked', () => {
+  render(
+    <ProjectCard
+      title="There, Blurred (2025)"
+      link="https://youtu.be/xzfFH4jBfHk"
+      linkLabel="Watch on YouTube"
+    />
+  );
+
+  const watchButton = screen.getByRole('button', { name: 'Watch' });
+  expect(watchButton).toHaveAttribute('aria-expanded', 'false');
+  expect(screen.queryByTitle('There, Blurred (2025)')).not.toBeInTheDocument();
+
+  fireEvent.click(watchButton);
+
+  const closeButton = screen.getByRole('button', { name: 'Close' });
+  expect(closeButton).toHaveAttribute('aria-expanded', 'true');
+  expect(screen.getByTitle('There, Blurred (2025)')).toBeInTheDocument();
+
+  fireEvent.click(closeButton);
+  expect(screen.queryByTitle('There, Blurred (2025)')).not.toBeInTheDocument();
+});

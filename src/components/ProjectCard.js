@@ -23,7 +23,7 @@ const ProjectCard = ({
   const isYouTube = Boolean(videoId);
 
   return (
-    <article className="project-card">
+    <article className={`project-card${showVideo ? ' project-card--expanded' : ''}`}>
       <header className="project-card-header">
         <h3 className="project-card-title">{title}</h3>
         {subtitle && <p className="project-card-subtitle">{subtitle}</p>}
@@ -51,33 +51,29 @@ const ProjectCard = ({
       {link && (
         <>
           {isYouTube ? (
-            showVideo && videoId ? (
-              <div className="project-card-video-inline">
-                <div className="project-card-video-wrap">
-                  <iframe
-                    title={title}
-                    src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="project-card-video-iframe"
-                  />
-                </div>
-              </div>
-            ) : (
+            <>
               <button
                 type="button"
-                className="project-card-thumb"
-                onClick={() => setShowVideo(true)}
-                aria-label={linkLabel || 'Watch'}
+                className={`btn ${showVideo ? 'btn-secondary' : 'btn-primary'} project-card-video-btn`}
+                onClick={() => setShowVideo((visible) => !visible)}
+                aria-expanded={showVideo}
               >
-                <img
-                  src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-                  alt=""
-                  className="project-card-thumb-img"
-                />
-                <span className="project-card-thumb-play" aria-hidden>▶</span>
+                {showVideo ? 'Close' : 'Watch'}
               </button>
-            )
+              {showVideo && videoId && (
+                <div className="project-card-video-inline">
+                  <div className="project-card-video-wrap">
+                    <iframe
+                      title={title}
+                      src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="project-card-video-iframe"
+                    />
+                  </div>
+                </div>
+              )}
+            </>
           ) : (
             <a
               href={link}
